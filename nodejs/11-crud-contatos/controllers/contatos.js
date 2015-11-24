@@ -11,13 +11,15 @@ module.exports = function(app) {
       var contato = req.body.contato;
       var usuario = req.session.usuario;
       usuario.contatos.push(contato);
+      console.log(usuario.valueOf());
       res.redirect('/contatos');
     },
-    show: function(req, res) {
+    show: function(req, response) {
       var id = req.params.id;
       var contato = req.session.usuario.contatos[id];
-      var params = {contato: contato, id: id};
-      res.render('contatos/show', params);
+      var contatoOb = {contato: contato, id: id};
+      // response.send(contatoOb); // OK
+      response.render('contatos/show', contatoOb); // TODO
     },
     edit: function(req, res) {
       var id = req.params.id;
@@ -40,6 +42,5 @@ module.exports = function(app) {
       res.redirect('/contatos');
     }
   };
-
   return ContatoController;
 };
