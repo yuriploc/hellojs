@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title> App mensagem </title>
+    <!-- <script src="angular-1.4.8/angular.js"></script>
+    <script src="angular-1.4.8/angular-route.js"></script> -->
+    <script src="index.js"></script>
+  </head>
+  <body ng-app="vaidarcerto" ng-controller="ctl">
+    <h1>App Mensagens</h1>
+    <h2>mensagem</h2>
+    <input ng-model="mensagem.nomeMensagem"/><br/>
+    <textarea ng-model="mensagem.corpoMensagem"></textarea>
+    <button ng-click="salvar()">salvar</button>
+    <div ng-repeat="msg in mensagens">
+      <h3>{{msg.nomeMensagem}}</h3>
+      <pre>{{msg.corpoMensagem}}</pre>
+      <button ng-click="excluir(msg.idmensagem)">X</button>
+    </div>
+  </body>
+</html>
